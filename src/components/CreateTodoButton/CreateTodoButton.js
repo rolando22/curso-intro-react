@@ -1,7 +1,7 @@
 import React from "react";
-import "../styles/CreateTodoButton.css";
+import "./CreateTodoButton.css";
 
-function CreateTodoButtom(props) {
+function CreateTodoButton(props) {
     const onClickButton = () => {
         alert("Aquí se debería abrir un modal");
     }
@@ -16,4 +16,4 @@ function CreateTodoButtom(props) {
     );
 }
 
-export { CreateTodoButtom };
+export { CreateTodoButton };
