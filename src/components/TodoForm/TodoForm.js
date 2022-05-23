@@ -4,7 +4,8 @@ import "./TodoForm.css";
 
 function TodoForm() {
     const [newTodoValue, setNewTodoValue] = React.useState('');
-    const { addTodo, setOpenModal } =  React.useContext(TodoContext);
+    const [buttonDisable, setButtonDisable] = React.useState(false);
+    const { addTodo, setOpenModal, existingTodo } =  React.useContext(TodoContext);
 
     const onSubmit = (event) => {
         event.preventDefault();
@@ -13,7 +14,8 @@ function TodoForm() {
     }
 
     const onChange = (event) => {
-        setNewTodoValue(event.target.value)
+        setNewTodoValue(event.target.value);
+        existingTodo(event.target.value) ? setButtonDisable(true) : setButtonDisable(false);
     }
 
     const onCancel = () => {
@@ -40,6 +42,7 @@ function TodoForm() {
                 <button
                     type="submit"
                     className="TodoForm-button TodoForm-button-add"
+                    disabled={buttonDisable}
                 >
                     Añadir
                 </button>

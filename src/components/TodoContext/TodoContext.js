@@ -42,6 +42,11 @@ function TodoProvider(props) {
         saveTodos(newTodos);
     };
 
+    const existingTodo = (text) => {
+        const existingTodo = todos.find(todo => todo.text === text);
+        return existingTodo ? true : false;
+    }
+
     return (
         <TodoContext.Provider value={{
             loading,
@@ -56,6 +61,7 @@ function TodoProvider(props) {
             openModal,
             setOpenModal,
             addTodo,
+            existingTodo,
         }}>
             {props.children}
         </TodoContext.Provider>
