@@ -11,6 +11,7 @@ import { Modal } from "../Modal/Modal";
 import { TodosError } from "../TodosError/TodosError";
 import { TodosLoading } from "../TodosLoading/TodosLoading";
 import { EmptyTodos } from "../EmptyTodos/EmptyTodos";
+import { EmptySearchTodos } from "../EmptySearchTodos/EmptySearchTodos";
 
 function App() {
   const { 
@@ -44,10 +45,12 @@ function App() {
         <TodoList
             error={error}
             loading={loading}
+            totalTodos={totalTodos}
             searchTodos={searchTodos}
             onError={() => <TodosError />}
             onLoading={() => <TodosLoading />}
             onEmpty={() => <EmptyTodos />}
+            onEmptySearchResults={() => <EmptySearchTodos searchText={searchValue}/>}
             render={todo => (
                 <TodoItem
                     key={todo.text}
