@@ -13,8 +13,6 @@ function TodoList({
     render,
     onEmptySearchResults
 }) {
-    const renderFunc = children || render;
-
     return(
         <section className="TodoList-container">
             {error && onError()}
@@ -22,7 +20,7 @@ function TodoList({
             {(!loading && !totalTodos) && onEmpty()}
             {(!!totalTodos && !searchTodos.length) && onEmptySearchResults()}
             <ul>
-                {searchTodos.map(renderFunc)}
+                {searchTodos.map(children || render)}
             </ul>
         </section>
     );
