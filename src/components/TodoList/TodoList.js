@@ -20,7 +20,7 @@ function TodoList({
             {(!loading && !totalTodos) && onEmpty()}
             {(!!totalTodos && !searchTodos.length) && onEmptySearchResults()}
             <ul>
-                {searchTodos.map(children || render)}
+                {(!loading && !error) && searchTodos.map(children || render)}
             </ul>
         </section>
     );
