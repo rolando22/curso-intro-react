@@ -1,14 +1,12 @@
 import React from "react";
 import { useLocalStorage } from "./useLocalStorage";
 
-const TodoContext = React.createContext();
-
 function useTodos() {
     const { item:todos, saveItem:saveTodos, sincronizeItem:sincronizeTodos, loading, error } = useLocalStorage('TODOS_V1', []);
     const [searchValue, setSearchValue] = React.useState('');
     const [openModal, setOpenModal] = React.useState(false);
-    const completedTodos = todos.filter(todo => todo.completed).length;
-    const totalTodos = todos.length;
+    const completedTodos = todos?.filter(todo => todo.completed).length;
+    const totalTodos = todos?.length;
     let searchTodos = todos;
 
     if (searchValue.length >= 1) {
